@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发邮件</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <div class="email">
+        <ul class="ii">
+            <li>个人邮箱：</li>
+            <li><input type="text"></li>
+        </ul>
+        <ul class="ii">
+            <li>公司邮箱：</li>
+            <li><input type="text"></li>
+        </ul>
+        <ul>
+            <li>添加附件：</li>
+            <li>
+                <div class="uploader blue">
+                    <input type="text" class="filename" readonly/>
+                    <input type="file" size="30"/>
+                </div>
+            </li>
+        </ul>
+        <ul>
+            <li class="true">发送</li>
+        </ul>
+    </div>
+
+</body>
+<script type="text/javascript">
+    $(function(){
+        $("input[type=file]").change(
+            function(){$(this).parents(".uploader").find(".filename").val($(this).val());
+                var files=$("input[type=text]").val();
+                console.log(files);
+            });
+        $("input[type=file]").each(function(){
+            if($(this).val()==""){$(this).parents(".uploader").find(".filename").val("No file selected...");}
+        });
+    });
+</script>
+</html>
